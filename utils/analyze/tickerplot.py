@@ -3,12 +3,16 @@ import collections
 import tqdm
 import time
 import numpy as np
+import os
 
 
-def crypto_plot(data: dict):
+def crypto_plot(data: dict, save_path: str):
     coins = ["BCHUSD", "DASHUSD", "USDTZUSD", "XETCZUSD", "XETHZUSD", "XXBTZUSD", "XXMRZUSD", "XXRPZUSD", "XZECZUSD"]
     plot_dict = dict()
     key_errors = 0
+
+    if not os.path.isdir(f"{save_path}/plots"):
+        os.mkdir(f"{save_path}/plots")
 
     for time_key, result in tqdm.tqdm(data.items()):
         plot_dict[time_key] = {}
@@ -51,9 +55,9 @@ def crypto_plot(data: dict):
         plt.plot(times, prices, label=key, marker=',')
         plt.legend()
         plt.suptitle(f"{key} chart")
-        plt.savefig(f"{key}.png", dpi=300)
+        plt.savefig(f"{save_path}/plots/{key}.png", dpi=300)
         plt.cla()
         plt.clf()
-        print(f"Plot for {coin} has been successfully generated in {time.time() - start_time} seconds!")
+        print(f"Plot for {coin} has been successfully generated and saved in {save_path}/plots in {time.time() - start_time} seconds!")
 
 
