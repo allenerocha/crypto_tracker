@@ -55,7 +55,7 @@ def crypto_plot(data: dict, save_path: str):
         plt.plot(times, prices, label=key, marker=',')
         plt.legend()
         plt.suptitle(f"{key} chart")
-        plt.savefig(f"{save_path}/plots/{key}{times[0]}_{times[-1]}.png", dpi=300)
+        plt.savefig(f"{save_path}/plots/{key}-{times[0]}_{times[-1]}.png", dpi=300)
         plt.cla()
         plt.clf()
         print(f"Plot for {coin} has been successfully generated and saved in {save_path}/plots in {time.time() - start_time} seconds!")
