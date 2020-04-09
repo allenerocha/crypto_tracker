@@ -51,7 +51,7 @@ def crypto_plot(data: dict, save_path: str):
         bottom=False,      # ticks along the bottom edge are off
         top=False,         # ticks along the top edge are off
         labelbottom=False) # labels along the bottom edge are off
-        plt.scatter(times, prices, label=key, s=3)
+        plt.scatter(times, prices, label=key, s=8)
         plt.plot(times, prices, label=key, marker=',')
         plt.legend()
         plt.suptitle(f"{key} chart")
